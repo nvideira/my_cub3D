@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/03/28 15:08:59 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/02 22:25:52 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_input
 	char		*C;
 	char		**map;
 	int			lines;
+	void		*mlx;
+	void		*window;
 	t_player	play;
 }	t_input;
 
@@ -73,5 +75,6 @@ int		sort_data(t_input *in, char *file);
 int		matrix_size(char **matrix);
 char	*ft_strdup_cub(const char *s1);
 int		file_lines(char *file);
-
+//mlx_init.c
+void    init_cub(t_input *mlx);
 #endif

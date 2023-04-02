@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:31:54 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/03/28 15:14:09 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/02 22:27:13 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ int	main(int ac, char **av)
 		j++;
 	}
 	// printf("Valid map\n");
+	init_cub(&in);
+	mlx_loop(in.mlx);
 	liberate(&in);
 }

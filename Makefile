@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lleiria- <lleiria-@student.42.fr>          +#+  +:+       +#+         #
+#    By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 12:06:25 by lleiria-          #+#    #+#              #
-#    Updated: 2023/03/27 14:45:17 by lleiria-         ###   ########.fr        #
+#    Updated: 2023/04/02 22:24:50 by nvideira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS_		=	main.c \
 				check_map.c \
 				sort_data.c \
 				parsing_utils.c \
-				check_map_utils.c
+				check_map_utils.c\
+				mlx_init.c
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))
 
