@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/02 22:25:52 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/04/03 22:44:05 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define FOV_ANGLE (60 * (PI / 180))
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 700
+# define ESC_KEY 65307
 
 typedef struct s_player
 {
@@ -77,4 +78,8 @@ char	*ft_strdup_cub(const char *s1);
 int		file_lines(char *file);
 //mlx_init.c
 void    init_cub(t_input *mlx);
+//keys.c
+int		ft_close(t_input *mlbx);
+int		key_press(int keycode, t_input *mlbx);
+
 #endif

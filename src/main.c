@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:31:54 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/02 22:27:13 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/04/03 22:42:31 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	main(int ac, char **av)
 	}
 	// printf("Valid map\n");
 	init_cub(&in);
+	mlx_hook(in.window, 17, 0, ft_close, &in);
+	mlx_hook(in.window, 2, 1L << 0, key_press, &in);
 	mlx_loop(in.mlx);
 	liberate(&in);
 }
