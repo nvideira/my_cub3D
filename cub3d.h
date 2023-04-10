@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/03 22:44:05 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:56:57 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	pos_x;
+	double	pos_y;
+	char	st_dir;
 }	t_player;
 
 typedef struct s_input
@@ -51,7 +56,7 @@ typedef struct s_input
 	int			lines;
 	void		*mlx;
 	void		*window;
-	t_player	play;
+	t_player	*play;
 }	t_input;
 
 typedef struct s_struct{
@@ -59,25 +64,44 @@ typedef struct s_struct{
 	void	*window;
 }	t_mlx;
 
+/*----______----------_______--__----_-----_______--------_______-----_______--________
+-----/  ___  \-------/  __   |-\ \--| |---/  _____|------/  __   |---/  ____/-|__    __|-
+----/  /__/  /------/  /  |  |--\ \-| |--/  /-----------/  /  |  |--|  |__-------|  |----
+---/  ___   /------/  /___|  |---\ \| |-|  |-----------/  /___|  |---\__  \------|  |----
+--/  /---\  \-----/  _____   |----\   |-|  |----------/  _____   |------\  |-----|  |----
+-/  /-----\  \---/  /-----|  |-----|  |--\  \--------/  /-----|  |--____/  /-----|  |----
+/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-|______/------|  |----*/
+
+//raycast.c
+// void    raycast_main(t_input *in);
+// void    raycast(t_input *in, int x); -----> work in progress
+
 //exit.c
 int		msg_error(char *message);
 void	free_matrix(char **matrix);
 void	free_array(char *str);
+
 //check_map.c
 int		check_map(t_input *in);
+
 //check_map_utils.c
 int		anormalies(char **map);
 int		extreme_lines(char **map, int line);
 int		validate(char x, int is_wall);
 int		not_solo(t_input *in);
+
 //sort_data.c
 int		sort_data(t_input *in, char *file);
+void	find_player(t_input *in);
+
 //parsing_utils.c
 int		matrix_size(char **matrix);
 char	*ft_strdup_cub(const char *s1);
 int		file_lines(char *file);
+
 //mlx_init.c
 void    init_cub(t_input *mlx);
+
 //keys.c
 int		ft_close(t_input *mlbx);
 int		key_press(int keycode, t_input *mlbx);

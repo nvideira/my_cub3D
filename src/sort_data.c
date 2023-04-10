@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleiria- <lleiria-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:09:34 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/03/27 12:20:06 by lleiria-         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:05:29 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,27 @@ int	sort_data(t_input *in, char *file)
 		map_line = get_next_line(fd);
 	}
 	return (putt_elems(in, tmp));
+}
+
+void	find_player(t_input *in)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (in->map[++i])
+	{
+		j = -1;
+		while (in->map[i][++j])
+		{
+			if (in->map[i][j] == 'N' || in->map[i][j] == 'S'
+				|| in->map[i][j] == 'E' || in->map[i][j] == 'W')
+			{
+				in->play->pos_x = j + 0.5;
+				in->play->pos_y = i + 0.5;
+				in->play->st_dir = in->map[i][j];
+				in->map[i][j] = '0';
+			}
+		}
+	}
 }
