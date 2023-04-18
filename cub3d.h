@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/10 17:56:57 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/18 18:07:10 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,27 @@
 
 typedef struct s_player
 {
+	double	camera_x;
 	double	dir_x;
 	double	dir_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
 	double	plane_x;
 	double	plane_y;
 	double	pos_x;
 	double	pos_y;
 	char	st_dir;
+	int		map_x;
+	int		map_y;
+	double	perp_wall_dist;
+	int		hit;
+	int		side;
 }	t_player;
 
 typedef struct s_input
@@ -59,10 +73,10 @@ typedef struct s_input
 	t_player	*play;
 }	t_input;
 
-typedef struct s_struct{
-	void	*mlx;
-	void	*window;
-}	t_mlx;
+// typedef struct s_struct{
+// 	void	*mlx;
+// 	void	*window;
+// }	t_mlx;
 
 /*----______----------_______--__----_-----_______--------_______-----_______--________
 -----/  ___  \-------/  __   |-\ \--| |---/  _____|------/  __   |---/  ____/-|__    __|-
