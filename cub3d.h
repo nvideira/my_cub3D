@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:29:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/19 18:43:26 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,35 @@
 # include <sys/errno.h>
 # include <math.h>
 # include <ctype.h>
+# include <limits.h>
+# include <float.h>
 
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 
 # define PI 3.14159265358979323846
 # define TWO_PI 6.28318530717958647692
-# define FOV_ANGLE (60 * (PI / 180))
+# define FOV_ANGLE (PI / 3)
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 700
+# define TILE_SIZE 64
 # define ESC_KEY 65307
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
 typedef struct s_player
 {
-	double	camera_x;
+	double	cam_x;
 	double	dir_x;
 	double	dir_y;
-	double	ray_dir_x;
-	double	ray_dir_y;
+	double	ray_d_x;
+	double	ray_d_y;
 	double	side_dist_x;
 	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
+	double	d_dist_x;
+	double	d_dist_y;
 	int		step_x;
 	int		step_y;
 	double	plane_x;
@@ -59,6 +66,11 @@ typedef struct s_player
 	double	old_time;
 }	t_player;
 
+typedef struct s_graph
+{
+	int	line_height;
+}	t_graph;
+
 typedef struct s_input
 {
 	char		*NO;
@@ -73,6 +85,7 @@ typedef struct s_input
 	void		*window;
 	char		st_dir;
 	t_player	*play;
+	t_graph		*graph;
 }	t_input;
 
 // typedef struct s_struct{
@@ -80,13 +93,13 @@ typedef struct s_input
 // 	void	*window;
 // }	t_mlx;
 
-/*----______----------_______--__----_-----_______--------_______-----_______--________
------/  ___  \-------/  __   |-\ \--| |---/  _____|------/  __   |---/  ____/-|__    __|-
-----/  /__/  /------/  /  |  |--\ \-| |--/  /-----------/  /  |  |--|  |__-------|  |----
----/  ___   /------/  /___|  |---\ \| |-|  |-----------/  /___|  |---\__  \------|  |----
---/  /---\  \-----/  _____   |----\   |-|  |----------/  _____   |------\  |-----|  |----
--/  /-----\  \---/  /-----|  |-----|  |--\  \--------/  /-----|  |--____/  /-----|  |----
-/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-|______/------|  |----*/
+/*----______----------_______--__----_-----_______--------_______----_______--________--
+-----/  ___  \-------/  __   |-\ \--| |---/  _____|------/  __   |--/  ____/-|__    __|-
+----/  /__/  /------/  /  |  |--\ \-| |--/  /-----------/  /  |  |-|  |___------|  |----
+---/  ___   /------/  /___|  |---\ \| |-|  |-----------/  /___|  |--\___  \-----|  |----
+--/  /---\  \-----/  _____   |----\   |-|  |----------/  _____   |------\  |----|  |----
+-/  /-----\  \---/  /-----|  |-----|  |--\  \_____---/  /-----|  |--____/  /----|  |----
+/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-|______/-----|__|----*/
 
 //raycast.c
 // void    raycast_main(t_input *in);

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/19 12:56:34 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/19 15:44:22 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	init_vars(t_input *in)
 	in->play = (t_player *)malloc(sizeof(t_player));
  	find_player(in);
 	define_dir_values(in);
- 	in->play->camera_x = 0;
- 	in->play->ray_dir_x = 0;
- 	in->play->ray_dir_y = 0;
+ 	in->play->cam_x = 0;
+ 	in->play->ray_d_x = 0;
+ 	in->play->ray_d_y = 0;
  	in->play->side_dist_x = 0;
  	in->play->side_dist_y = 0;
- 	in->play->delta_dist_x = 0;
- 	in->play->delta_dist_y = 0;
+ 	in->play->d_dist_x = 0;
+ 	in->play->d_dist_y = 0;
  	in->play->step_x = 0;
  	in->play->step_y = 0;
  	in->play->perp_wall_dist = 0;
