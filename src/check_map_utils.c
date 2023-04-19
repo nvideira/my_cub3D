@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleiria- <lleiria-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:41:48 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/03/27 16:16:16 by lleiria-         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:46:47 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,7 @@ int	not_solo(t_input *in)
 		{
 			if (in->map[y][x] == 'N' || in->map[y][x] == 'S'
 				|| in->map[y][x] == 'E' || in->map[y][x] == 'W')
-			{
-				in->play.x = x;
-				in->play.y = y;
 				counter++;
-			}
 		}
 	}
 	if (counter == 1)

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/18 18:07:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/19 12:29:10 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ typedef struct s_player
 	double	plane_y;
 	double	pos_x;
 	double	pos_y;
-	char	st_dir;
 	int		map_x;
 	int		map_y;
 	double	perp_wall_dist;
 	int		hit;
 	int		side;
+	double	time;
+	double	old_time;
 }	t_player;
 
 typedef struct s_input
@@ -70,6 +71,7 @@ typedef struct s_input
 	int			lines;
 	void		*mlx;
 	void		*window;
+	char		st_dir;
 	t_player	*play;
 }	t_input;
 
@@ -114,7 +116,9 @@ char	*ft_strdup_cub(const char *s1);
 int		file_lines(char *file);
 
 //mlx_init.c
-void    init_cub(t_input *mlx);
+void    init_cub(t_input *in);
+void    init_vars(t_input *in);
+void	define_dir_values(t_input *in);
 
 //keys.c
 int		ft_close(t_input *mlbx);

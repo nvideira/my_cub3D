@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:09:34 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/10 16:05:29 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/19 12:50:25 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void	find_player(t_input *in)
 			if (in->map[i][j] == 'N' || in->map[i][j] == 'S'
 				|| in->map[i][j] == 'E' || in->map[i][j] == 'W')
 			{
-				in->play->pos_x = j + 0.5;
-				in->play->pos_y = i + 0.5;
-				in->play->st_dir = in->map[i][j];
+				in->play->pos_x = (double)j + 0.5;
+				in->play->pos_y = (double)i + 0.5;
+				in->st_dir = in->map[i][j];
 				in->map[i][j] = '0';
 			}
 		}
