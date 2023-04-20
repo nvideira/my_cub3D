@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/19 18:38:59 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/20 17:27:45 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void    raycast(t_input *in, int x)
             hit = 1;
     }
     if (side == 0)
-		in->play->perp_wall_dist = (in->play->map_x - in->play->pos_x + (1 - in->play->step_x) / 2) / ray_d_x;
+		in->play->perp_wall_dist = (in->play->map_x - in->play->pos_x + (1 - in->play->step_x) / 2) / in->play->ray_d_x;
     else
-        in->play->perp_wall_dist = (in->play->map_y - in->play->pos_y + (1 - in->play->step_y) / 2) / ray_d_y;
-	start_draw(in)
+	{
+        in->play->perp_wall_dist = (in->play->map_y - in->play->pos_y + (1 - in->play->step_y) / 2) / in->play->ray_d_y;
+	}
+	start_draw(in, x);
 }

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/19 15:44:22 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/20 15:35:24 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	init_vars(t_input *in)
  	in->play->side = 0;
  	in->play->map_x = 0;
  	in->play->map_y = 0;
+	in->chrono->time = 0;
+	in->chrono->old_time = 0;
 }
 
 void    init_cub(t_input *in)
