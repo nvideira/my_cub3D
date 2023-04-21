@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:31:54 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/20 16:59:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/21 11:29:55 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,12 @@ int	main(int ac, char **av)
 		printf("%s\n", in.map[j]);
 		j++;
 	}
-	// printf("Valid map\n");
+	//printf("Valid map\n");
 	init_cub(&in);
 	mlx_hook(in.window, 17, 0, ft_close, &in);
 	mlx_hook(in.window, 2, 1L << 0, key_press, &in);
 	raycast_main(&in);
+	mlx_destroy_image(in.mlx, in.img->img);
 	mlx_loop(in.mlx);
 	liberate(&in);
 }

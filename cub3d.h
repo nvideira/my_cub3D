@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:23:34 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/21 10:35:29 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		width;
-	int		height;
 }	t_img;
 
 typedef struct s_time
@@ -132,6 +130,7 @@ typedef struct s_input
 	void		*mlx;
 	void		*window;
 	char		st_dir;
+	t_img		*img;
 	t_time		*chrono;
 	t_player	*play;
 	t_graph		*graph;
@@ -151,8 +150,9 @@ void    raycast(t_input *in, int x); //-----> work in progress
 
 //draw.c
 void	fps_count(t_input *in);
-void	put_stripe(int x, int start, int end, int color);
+void	put_stripe(int x, t_input *in, int color);
 void	start_draw(t_input *in, int x);
+void	my_mlx_pixel_put(t_input *in, int x, int y, int color);
 
 //exit.c
 int		msg_error(char *message);

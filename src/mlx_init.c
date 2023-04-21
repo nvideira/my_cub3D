@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/20 15:35:24 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/21 11:32:29 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	define_dir_values(t_input *in)
 void	init_vars(t_input *in)
 {
 	in->play = (t_player *)malloc(sizeof(t_player));
+	in->chrono = (t_time *)malloc(sizeof(t_time));
  	find_player(in);
 	define_dir_values(in);
  	in->play->cam_x = 0;
@@ -70,6 +71,7 @@ void	init_vars(t_input *in)
 void    init_cub(t_input *in)
 {
 	init_vars(in);
+	in->img = (t_img *)malloc(sizeof(t_img));
     in->mlx = mlx_init();
     in->window = mlx_new_window(in->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 }
