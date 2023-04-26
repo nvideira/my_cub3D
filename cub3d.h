@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/21 10:35:29 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/26 10:09:01 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,15 +144,17 @@ typedef struct s_input
 -/  /-----\  \---/  /-----|  |-----|  |--\  \_____---/  /-----|  |--____/  /----|  |----
 /__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-|______/-----|__|----*/
 
+t_input	*vars(void);
+
 //raycast.c
-void    raycast_main(t_input *in);
-void    raycast(t_input *in, int x); //-----> work in progress
+void    raycast_main(void);
+void    raycast(int x); //-----> work in progress
 
 //draw.c
-void	fps_count(t_input *in);
-void	put_stripe(int x, t_input *in, int color);
-void	start_draw(t_input *in, int x);
-void	my_mlx_pixel_put(t_input *in, int x, int y, int color);
+void	fps_count();
+void	put_stripe(int x, int color);
+void	start_draw(int x);
+void	my_mlx_pixel_put(int x, int y, int color);
 
 //exit.c
 int		msg_error(char *message);
@@ -160,17 +162,19 @@ void	free_matrix(char **matrix);
 void	free_array(char *str);
 
 //check_map.c
-int		check_map(t_input *in);
+int		check_map();
 
 //check_map_utils.c
-int		anormalies(char **map);
+int		abnormalities(char **map);
 int		extreme_lines(char **map, int line);
 int		validate(char x, int is_wall);
-int		not_solo(t_input *in);
+int		not_solo(void);
+void	check_file(char *file);
 
 //sort_data.c
-int		sort_data(t_input *in, char *file);
-void	find_player(t_input *in);
+int		sort_data(char *file);
+void	find_player(void);
+int		is_not_alright(void);
 
 //parsing_utils.c
 int		matrix_size(char **matrix);
@@ -178,14 +182,14 @@ char	*ft_strdup_cub(const char *s1);
 int		file_lines(char *file);
 
 //mlx_init.c
-void    init_cub(t_input *in);
-void    init_vars(t_input *in);
-void	define_dir_values(t_input *in);
+void    init_cub(void);
+void    init_vars(void);
+void	define_dir_values(void);
 
 //keys.c
-int		ft_close(t_input *mlbx);
-int		key_press(int keycode, t_input *mlbx);
-void	rotate(t_input *in, int dir);
-void	move_fwd(t_input *in);
+int		ft_close(void);
+int		key_press(int keycode);
+void	rotate(int dir);
+void	move_fwd(void);
 
 #endif

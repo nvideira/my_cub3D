@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:05:01 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:40:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/26 09:57:14 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ int	not_closed(char **map)
 	return (error_found);
 }
 
-int	check_map(t_input *in)
+int	check_map(void)
 {
-	if (anormalies(in->map))
-		return (msg_error("\e[1;91mError\nAnormalies found in the map\n\e[0m"));
-	if (not_closed(in->map))
+	if (abnormalities(vars()->map))
+		return (msg_error("\e[1;91mError\nAbnormalies found in the map\n\e[0m"));
+	if (not_closed(vars()->map))
 		return (msg_error("\e[1;91mError\nMap is not closed\n\e[0m"));
-	if (not_solo(in))
+	if (not_solo())
 		return (msg_error("\e[1;91mError\nThis map is not single player\n\e[0m"));
 	printf("MAP IS fineeeeee\n");
 	return (0);

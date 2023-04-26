@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mavars()->c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:31:54 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/21 11:29:55 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/21 14:52:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	check_file(char *file)
+t_input	*vars(void)
 {
-	int	end;
+	static t_input	vars;
 
-	end = ft_strlen(file) - 1;
-	if (file[end] != 'b' || file[end - 1] != 'u'
-		|| file[end - 2] != 'c' || file[end - 3] != '.')
-	{
-		printf("\e[1;91mError\nInvalid file type\n\e[0m");
-		exit(1);
-	}
+	return(&vars);
 }
 
 // int	file_lines(char	*file)
@@ -45,50 +39,49 @@ void	check_file(char *file)
 // 	return (counter);
 // }
 
-void	liberate(t_input *in)
+void	liberate(void)
 {
-	free_array(in->NO);
-	free_array(in->SO);
-	free_array(in->WE);
-	free_array(in->EA);
-	free_array(in->F);
-	free_array(in->C);
-	free_matrix(in->map);
+	free_array(vars()->NO);
+	free_array(vars()->SO);
+	free_array(vars()->WE);
+	free_array(vars()->EA);
+	free_array(vars()->F);
+	free_array(vars()->C);
+	free_matrix(vars()->map);
 }
 
 int	main(int ac, char **av)
 {
-	t_input	in;
 	int		j;
 	
 	j = 0;
-	ft_memset(&in, 0, sizeof(t_input));
 	if (ac != 2)
 		printf("\e[1;91mError\nwrong number of arguments\n\e[0m");
-	if (sort_data(&in, av[1]) || check_map(&in))
+	if (sort_data(av[1]) || check_map())
 	{
-		liberate(&in);
+		liberate();
 		return (1);
 	}
 	printf("elementos:\n");
-	printf("NO = %s\n", in.NO);
-	printf("SO = %s\n", in.SO);
-	printf("WE = %s\n", in.WE);
-	printf("EA = %s\n", in.EA);
-	printf("F = %s\n", in.F);
-	printf("C = %s\n", in.C);
+	printf("NO = %s\n", vars()->NO);
+	printf("SO = %s\n", vars()->SO);
+	printf("WE = %s\n", vars()->WE);
+	printf("EA = %s\n", vars()->EA);
+	printf("F = %s\n", vars()->F);
+	printf("C = %s\n", vars()->C);
 	printf("map:\n");
-	while (in.map[j])
+	while (vars()->map[j])
 	{
-		printf("%s\n", in.map[j]);
+		printf("%s\n", vars()->map[j]);
 		j++;
 	}
 	//printf("Valid map\n");
-	init_cub(&in);
-	mlx_hook(in.window, 17, 0, ft_close, &in);
-	mlx_hook(in.window, 2, 1L << 0, key_press, &in);
-	raycast_main(&in);
-	mlx_destroy_image(in.mlx, in.img->img);
-	mlx_loop(in.mlx);
-	liberate(&in);
+	init_cub();
+	mlx_hook(vars()->window, 17, 0, ft_close, NULL);
+	mlx_hook(vars()->window, 2, 1L << 0, key_press, NULL);
+	raycast_main();
+	mlx_destroy_image(vars()->mlx, vars()->img->img);
+	mlx_loop(vars()->mlx);
+	liberate();
+	return (0);
 }

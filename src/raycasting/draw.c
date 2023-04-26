@@ -6,54 +6,60 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/21 10:35:07 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/26 11:56:28 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	start_draw(t_input *in, int x)
+void	start_draw(int x)
 {
 	int color;
 
 	color = PURPLE;
-	in->graph->line_height = (int)(WIN_HEIGHT / in->play->perp_wall_dist);
-	in->graph->draw_start = -in->graph->line_height / 2 + WIN_HEIGHT / 2;
-	if (in->graph->draw_start < 0)
-		in->graph->draw_start = 0;
-	in->graph->draw_end = in->graph->line_height / 2 + WIN_HEIGHT / 2;
-	if (in->graph->draw_end >= WIN_HEIGHT)
-		in->graph->draw_end = WIN_HEIGHT - 1;
-	if (in->play->side == 1)
+	vars()->graph->line_height = (int)(WIN_HEIGHT / vars()->play->perp_wall_dist);
+	vars()->graph->draw_start = -vars()->graph->line_height / 2 + WIN_HEIGHT / 2;
+	if (vars()->graph->draw_start < 0)
+		vars()->graph->draw_start = 0;
+	vars()->graph->draw_end = vars()->graph->line_height / 2 + WIN_HEIGHT / 2;
+	if (vars()->graph->draw_end >= WIN_HEIGHT)
+		vars()->graph->draw_end = WIN_HEIGHT - 1;
+	if (vars()->play->side == 1)
 		color = color / 2;
-	put_stripe(x, in, color);
+	put_stripe(x, color);
 }
 
-void	put_stripe(int x, t_input *in, int color)
+void	put_stripe(int x, int color)
 {
 	int y;
 
-	y = in->graph->draw_start;
-	while (y < in->graph->draw_end)
+	y = vars()->graph->draw_start;
+	while (x < TILE_SIZE)
 	{
-		my_mlx_pixel_put(in, x, y, color);
-		y++;
+		while (y < vars()->graph->draw_end)
+		{
+			//printf("x: %d, y: %d, color: %d\n", x, y, color);
+			my_mlx_pixel_put(x * TILE_SIZE, y, color);
+			y++;
+			color += y;
+		}
+		x++;
 	}
 }
 
-void	fps_count(t_input *in)
+void	fps_count()
 {
-	in->chrono->old_time = in->chrono->time;
-	in->chrono->time = clock();
-	in->chrono->frame_time = (double)(in->chrono->time - in->chrono->old_time) / CLOCKS_PER_SEC;
-	in->chrono->move_speed = in->chrono->frame_time * 5.0;
-	in->chrono->rot_speed = in->chrono->frame_time * 3.0;
+	vars()->chrono->old_time = vars()->chrono->time;
+	vars()->chrono->time = clock();
+	vars()->chrono->frame_time = (double)(vars()->chrono->time - vars()->chrono->old_time) / CLOCKS_PER_SEC;
+	vars()->chrono->move_speed = vars()->chrono->frame_time * 5.0;
+	vars()->chrono->rot_speed = vars()->chrono->frame_time * 3.0;
 }
 
-void	my_mlx_pixel_put(t_input *in, int x, int y, int color)
+void	my_mlx_pixel_put(int x, int y, int color)
 {
 	char	*dst;
 
-	dst = in->img->addr + (y * in->img->line_length + x * (in->img->bits_per_pixel / 8));
+	dst = vars()->img->addr + (y * vars()->img->line_length + x * (vars()->img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

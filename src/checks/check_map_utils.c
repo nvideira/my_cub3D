@@ -6,13 +6,13 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:41:48 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:46:47 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/26 09:57:31 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	anormalies(char **map)
+int	abnormalities(char **map)
 {
 	int	i;
 	int	j;
@@ -65,7 +65,7 @@ int	validate(char x, int is_wall)
 	return (0);
 }
 
-int	not_solo(t_input *in)
+int	not_solo(void)
 {
 	int	x;
 	int	y;
@@ -73,17 +73,30 @@ int	not_solo(t_input *in)
 
 	y = -1;
 	counter = 0;
-	while (in->map[++y])
+	while (vars()->map[++y])
 	{
 		x = -1;
-		while (in->map[y][++x])
+		while (vars()->map[y][++x])
 		{
-			if (in->map[y][x] == 'N' || in->map[y][x] == 'S'
-				|| in->map[y][x] == 'E' || in->map[y][x] == 'W')
+			if (vars()->map[y][x] == 'N' || vars()->map[y][x] == 'S'
+				|| vars()->map[y][x] == 'E' || vars()->map[y][x] == 'W')
 				counter++;
 		}
 	}
 	if (counter == 1)
 		return (0);
 	return (1);
+}
+
+void	check_file(char *file)
+{
+	int	end;
+
+	end = ft_strlen(file) - 1;
+	if (file[end] != 'b' || file[end - 1] != 'u'
+		|| file[end - 2] != 'c' || file[end - 3] != '.')
+	{
+		printf("\e[1;91mError\nInvalid file type\n\e[0m");
+		exit(1);
+	}
 }
