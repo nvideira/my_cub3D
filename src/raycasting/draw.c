@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/26 11:56:28 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/27 12:50:12 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,21 @@ void	start_draw(int x)
 	vars()->graph->draw_end = vars()->graph->line_height / 2 + WIN_HEIGHT / 2;
 	if (vars()->graph->draw_end >= WIN_HEIGHT)
 		vars()->graph->draw_end = WIN_HEIGHT - 1;
-	if (vars()->play->side == 1)
-		color = color / 2;
+	//if (vars()->play->side == 1)
+	//	color = color / 2;
 	put_stripe(x, color);
 }
-
 void	put_stripe(int x, int color)
 {
 	int y;
 
 	y = vars()->graph->draw_start;
-	while (x < TILE_SIZE)
+	while (y < vars()->graph->draw_end)
 	{
-		while (y < vars()->graph->draw_end)
-		{
-			//printf("x: %d, y: %d, color: %d\n", x, y, color);
-			my_mlx_pixel_put(x * TILE_SIZE, y, color);
-			y++;
-			color += y;
-		}
-		x++;
+		//printf("x: %d, y: %d, color: %d\n", x, y, color);
+		my_mlx_pixel_put(x, y, color);
+		y++;
+		//color += y;
 	}
 }
 
