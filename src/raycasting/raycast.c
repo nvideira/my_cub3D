@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/27 12:50:35 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:32:24 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void    raycast_main(void)
     int x;
 
     x = 0;
-	
 	vars()->img->img = mlx_new_image(vars()->mlx, WIN_WIDTH, WIN_HEIGHT);
 	vars()->img->addr = mlx_get_data_addr(vars()->img->img, &vars()->img->bits_per_pixel, &vars()->img->line_length, &vars()->img->endian);
     while (x < WIN_WIDTH)

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/26 10:09:01 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:37:15 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ void    raycast_main(void);
 void    raycast(int x); //-----> work in progress
 
 //draw.c
-void	fps_count();
 void	put_stripe(int x, int color);
 void	start_draw(int x);
 void	my_mlx_pixel_put(int x, int y, int color);
@@ -162,7 +161,7 @@ void	free_matrix(char **matrix);
 void	free_array(char *str);
 
 //check_map.c
-int		check_map();
+int		check_map(void);
 
 //check_map_utils.c
 int		abnormalities(char **map);
@@ -191,5 +190,6 @@ int		ft_close(void);
 int		key_press(int keycode);
 void	rotate(int dir);
 void	move_fwd(void);
+void	fps_count(void);
 
 #endif

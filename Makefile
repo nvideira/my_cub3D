@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 12:06:25 by lleiria-          #+#    #+#              #
-#    Updated: 2023/04/20 17:11:53 by ubuntu           ###   ########.fr        #
+#    Updated: 2023/04/28 16:35:50 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS_		=	main.c \
 				checks/check_map_utils.c\
 				sort_data.c \
 				mlx_init.c\
-				keys.c \
+				movement/keys.c \
 				raycasting/raycast.c \
 				raycasting/draw.c
 
@@ -58,6 +58,7 @@ $(_OBJ):
 	mkdir $@
 	mkdir $(_OBJ)checks
 	mkdir $(_OBJ)raycasting
+	mkdir $(_OBJ)movement
 
 clean:
 	make clean -C libft

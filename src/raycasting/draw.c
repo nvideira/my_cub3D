@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/27 12:50:12 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/28 16:38:17 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,8 @@ void	put_stripe(int x, int color)
 		//printf("x: %d, y: %d, color: %d\n", x, y, color);
 		my_mlx_pixel_put(x, y, color);
 		y++;
-		//color += y;
+		color += y * 256 / 2 / vars()->graph->line_height;
 	}
-}
-
-void	fps_count()
-{
-	vars()->chrono->old_time = vars()->chrono->time;
-	vars()->chrono->time = clock();
-	vars()->chrono->frame_time = (double)(vars()->chrono->time - vars()->chrono->old_time) / CLOCKS_PER_SEC;
-	vars()->chrono->move_speed = vars()->chrono->frame_time * 5.0;
-	vars()->chrono->rot_speed = vars()->chrono->frame_time * 3.0;
 }
 
 void	my_mlx_pixel_put(int x, int y, int color)
