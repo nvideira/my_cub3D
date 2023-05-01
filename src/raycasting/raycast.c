@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/28 16:32:24 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/01 23:14:41 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void    raycast_main(void)
         x++;
     }
 	mlx_put_image_to_window(vars()->mlx, vars()->window, vars()->img->img, 0, 0);
+	mlx_destroy_image(vars()->mlx, vars()->img->img);
+	mlx_loop(vars()->mlx);
 }
 
 void    raycast(int x)
 {
 	int hit;
-	//int side;
+	int side;
 
 	vars()->play->cam_x = 2 * x / (double)WIN_WIDTH - 1;
 	vars()->play->ray_d_x = vars()->play->dir_x + vars()->play->plane_x * vars()->play->cam_x;
@@ -72,13 +74,13 @@ void    raycast(int x)
         {
             vars()->play->side_dist_x += vars()->play->d_dist_x;
             vars()->play->map_x += vars()->play->step_x;
-            //side = 0;
+            side = 0;
         }
         else
         {
             vars()->play->side_dist_y += vars()->play->d_dist_y;
             vars()->play->map_y += vars()->play->step_y;
-            //side = 1;
+            side = 1;
         }
         if (vars()->map[vars()->play->map_y][vars()->play->map_x] == '1')
             hit = 1;
@@ -87,5 +89,6 @@ void    raycast(int x)
 		vars()->play->perp_wall_dist = (vars()->play->side_dist_x - vars()->play->d_dist_x) + ((double)(vars()->play->step_x + 1) / 2.0) * vars()->play->d_dist_x;
     else
 		vars()->play->perp_wall_dist = (vars()->play->side_dist_y - vars()->play->d_dist_y) + ((double)(vars()->play->step_y + 1) / 2.0) * vars()->play->d_dist_y;
-	start_draw(x);
+	fps_count();
+	start_draw(x, side);
 }

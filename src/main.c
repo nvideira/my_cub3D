@@ -80,8 +80,7 @@ int	main(int ac, char **av)
 	mlx_hook(vars()->window, 17, 0, ft_close, NULL);
 	mlx_hook(vars()->window, 2, 1L << 0, key_press, NULL);
 	raycast_main();
-	mlx_destroy_image(vars()->mlx, vars()->img->img);
-	mlx_loop(vars()->mlx);
+
 	liberate();
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/28 16:37:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/01 23:02:22 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 
 //screen
 # define FOV_ANGLE (PI / 3)
-# define WIN_WIDTH 1300
-# define WIN_HEIGHT 700
+# define WIN_WIDTH 2600
+# define WIN_HEIGHT 1400
 # define TILE_SIZE 64
 
 //key codes
@@ -152,7 +152,7 @@ void    raycast(int x); //-----> work in progress
 
 //draw.c
 void	put_stripe(int x, int color);
-void	start_draw(int x);
+void	start_draw(int x, int side);
 void	my_mlx_pixel_put(int x, int y, int color);
 
 //exit.c

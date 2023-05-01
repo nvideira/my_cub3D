@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/28 16:38:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/01 23:06:50 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	start_draw(int x)
+void	start_draw(int x, int side)
 {
 	int color;
 
@@ -24,8 +24,8 @@ void	start_draw(int x)
 	vars()->graph->draw_end = vars()->graph->line_height / 2 + WIN_HEIGHT / 2;
 	if (vars()->graph->draw_end >= WIN_HEIGHT)
 		vars()->graph->draw_end = WIN_HEIGHT - 1;
-	//if (vars()->play->side == 1)
-	//	color = color / 2;
+	if (side == 1)
+		color = color / 2;
 	put_stripe(x, color);
 }
 void	put_stripe(int x, int color)
@@ -38,7 +38,7 @@ void	put_stripe(int x, int color)
 		//printf("x: %d, y: %d, color: %d\n", x, y, color);
 		my_mlx_pixel_put(x, y, color);
 		y++;
-		color += y * 256 / 2 / vars()->graph->line_height;
+		color += y * y / (x + 1);
 	}
 }
 

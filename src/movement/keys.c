@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 22:29:17 by nvideira          #+#    #+#             */
-/*   Updated: 2023/04/28 16:35:07 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/01 23:04:59 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	key_press(int keycode)
 		rotate(1);
 	else if (keycode == RIGHT_KEY)
 		rotate(-1);
+	raycast_main();
 	return (0);
 }
 
@@ -56,12 +57,15 @@ void	rotate(int dir)
 
 void	move_fwd(void)
 {
-	printf("pos_x: %f\n", vars()->play->pos_x);
-	printf("pos_y: %f\n", vars()->play->pos_y);
 	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x + vars()->play->dir_x * vars()->chrono->move_speed))] == '0')
 		vars()->play->pos_x += vars()->play->dir_x * vars()->chrono->move_speed;
 	if(vars()->map[(int)(vars()->play->pos_y + vars()->play->dir_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
 		vars()->play->pos_y += vars()->play->dir_y * vars()->chrono->move_speed;
+	printf("pos_x: %f\n", vars()->play->pos_x);
+	printf("pos_y: %f\n", vars()->play->pos_y);
+	printf("dir_x: %f\n", vars()->play->dir_x);
+	printf("dir_y: %f\n", vars()->play->dir_y);
+	printf("move_speed: %f\n", vars()->chrono->move_speed);
 }
 
 void	fps_count(void)
@@ -70,5 +74,5 @@ void	fps_count(void)
 	vars()->chrono->time = clock();
 	vars()->chrono->frame_time = (double)(vars()->chrono->time - vars()->chrono->old_time) / CLOCKS_PER_SEC;
 	vars()->chrono->move_speed = vars()->chrono->frame_time * 5000.0;
-	vars()->chrono->rot_speed = vars()->chrono->frame_time * 3.0;
+	vars()->chrono->rot_speed = vars()->chrono->frame_time * 5000.0;
 }

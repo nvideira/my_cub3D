@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/26 16:53:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/04/30 21:17:57 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_vars(void)
  	vars()->play->d_dist_y = 0;
  	vars()->play->step_x = 0;
  	vars()->play->step_y = 0;
+	vars()->play->side = 0;
  	vars()->play->perp_wall_dist = 0;
  	vars()->play->hit = 0;
  	vars()->play->side = 0;
