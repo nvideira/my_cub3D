@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/02 12:54:43 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:25:39 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	start_draw(int x, int side)
 	if (vars()->graph->draw_end >= WIN_HEIGHT)
 		vars()->graph->draw_end = WIN_HEIGHT - 1;
 	if (side == 0)
-		color = color / 3;
+		color /= 3;
 	put_stripe(x, color);
 }
 void	put_stripe(int x, int color)
