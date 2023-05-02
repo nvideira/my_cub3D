@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/01 23:06:50 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:31:44 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_stripe(int x, int color)
 		//printf("x: %d, y: %d, color: %d\n", x, y, color);
 		my_mlx_pixel_put(x, y, color);
 		y++;
-		color += y * y / (x + 1);
+		//color += y * y / (x + 1);
 	}
 }
 

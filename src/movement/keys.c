@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 22:29:17 by nvideira          #+#    #+#             */
-/*   Updated: 2023/05/01 23:04:59 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:36:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,14 @@ int	key_press(int keycode)
 {
 	if (keycode == ESC_KEY)
 		ft_close();
-	// else if (keycode == D_KEY
-	// 	&& mlbx->map.matrix[mlbx->player.y][mlbx->player.x + 1] != '1')
-	// 	move_pl(mlbx, 0, 1);
-	// else if (keycode == A_KEY
-	// 	&& mlbx->map.matrix[mlbx->player.y][mlbx->player.x - 1] != '1')
-	// 	move_pl(mlbx, 0, -1);
+	else if (keycode == D_KEY)
+		move_rsw();
+	else if (keycode == A_KEY)
+		move_lsw();
 	else if (keycode == W_KEY)
 		move_fwd();
-	// else if (keycode == S_KEY
-	// 	&& mlbx->map.matrix[mlbx->player.y + 1][mlbx->player.x] != '1')
-	// 	move_pl(mlbx, 1, 0);
+	else if (keycode == S_KEY)
+		move_bwd();
 	else if (keycode == LEFT_KEY)
 		rotate(1);
 	else if (keycode == RIGHT_KEY)
@@ -61,11 +58,30 @@ void	move_fwd(void)
 		vars()->play->pos_x += vars()->play->dir_x * vars()->chrono->move_speed;
 	if(vars()->map[(int)(vars()->play->pos_y + vars()->play->dir_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
 		vars()->play->pos_y += vars()->play->dir_y * vars()->chrono->move_speed;
-	printf("pos_x: %f\n", vars()->play->pos_x);
-	printf("pos_y: %f\n", vars()->play->pos_y);
-	printf("dir_x: %f\n", vars()->play->dir_x);
-	printf("dir_y: %f\n", vars()->play->dir_y);
-	printf("move_speed: %f\n", vars()->chrono->move_speed);
+}
+
+void	move_bwd(void)
+{
+	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x - vars()->play->dir_x * vars()->chrono->move_speed))] == '0')
+		vars()->play->pos_x -= vars()->play->dir_x * vars()->chrono->move_speed;
+	if(vars()->map[(int)(vars()->play->pos_y - vars()->play->dir_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
+		vars()->play->pos_y -= vars()->play->dir_y * vars()->chrono->move_speed;
+}
+
+void	move_lsw(void)
+{
+	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x - vars()->play->plane_x * vars()->chrono->move_speed))] == '0')
+		vars()->play->pos_x += vars()->play->plane_x * vars()->chrono->move_speed;
+	if(vars()->map[(int)(vars()->play->pos_y - vars()->play->plane_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
+		vars()->play->pos_y -= vars()->play->plane_y * vars()->chrono->move_speed;
+}
+
+void	move_rsw(void)
+{
+	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x + vars()->play->plane_x * vars()->chrono->move_speed))] == '0')
+		vars()->play->pos_x -= vars()->play->plane_x * vars()->chrono->move_speed;
+	if(vars()->map[(int)(vars()->play->pos_y + vars()->play->plane_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
+		vars()->play->pos_y += vars()->play->plane_y * vars()->chrono->move_speed;
 }
 
 void	fps_count(void)

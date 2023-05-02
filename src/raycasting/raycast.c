@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/01 23:14:41 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:35:40 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    raycast(int x)
 	int side;
 
 	vars()->play->cam_x = 2 * x / (double)WIN_WIDTH - 1;
-	vars()->play->ray_d_x = vars()->play->dir_x + vars()->play->plane_x * vars()->play->cam_x;
+	vars()->play->ray_d_x = -vars()->play->dir_x - vars()->play->plane_x * vars()->play->cam_x;
     vars()->play->ray_d_y = vars()->play->dir_y + vars()->play->plane_y * vars()->play->cam_x;
 	vars()->play->map_x = (int)vars()->play->pos_x;
 	vars()->play->map_y = (int)vars()->play->pos_y;
@@ -85,10 +85,17 @@ void    raycast(int x)
         if (vars()->map[vars()->play->map_y][vars()->play->map_x] == '1')
             hit = 1;
     }
-    if (vars()->play->side_dist_x < vars()->play->side_dist_y)
-		vars()->play->perp_wall_dist = (vars()->play->side_dist_x - vars()->play->d_dist_x) + ((double)(vars()->play->step_x + 1) / 2.0) * vars()->play->d_dist_x;
-    else
-		vars()->play->perp_wall_dist = (vars()->play->side_dist_y - vars()->play->d_dist_y) + ((double)(vars()->play->step_y + 1) / 2.0) * vars()->play->d_dist_y;
+	if (side == 0)
+		vars()->play->perp_wall_dist = (vars()->play->map_x - vars()->play->pos_x + (1 - vars()->play->step_x) / 2) / vars()->play->ray_d_x;
+	else
+		vars()->play->perp_wall_dist = (vars()->play->map_y - vars()->play->pos_y + (1 - vars()->play->step_y) / 2) / vars()->play->ray_d_y;
+    //if (vars()->play->side_dist_x < vars()->play->side_dist_y)
+	//	vars()->play->perp_wall_dist = (vars()->play->side_dist_x - vars()->play->d_dist_x) + ((double)(vars()->play->step_x + 1) / 2.0) * vars()->play->d_dist_x;
+    //else
+	//	vars()->play->perp_wall_dist = (vars()->play->side_dist_y - vars()->play->d_dist_y) + ((double)(vars()->play->step_y + 1) / 2.0) * vars()->play->d_dist_y;
 	fps_count();
 	start_draw(x, side);
 }
+ //Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
+    //  if(side == 0) perpWallDist = (sideDistX - deltaDistX);
+    //  else          perpWallDist = (sideDistY - deltaDistY);

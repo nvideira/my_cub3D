@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/01 23:02:22 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:11:40 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 
 //screen
 # define FOV_ANGLE (PI / 3)
-# define WIN_WIDTH 2600
-# define WIN_HEIGHT 1400
+# define WIN_WIDTH 1300
+# define WIN_HEIGHT 700
 # define TILE_SIZE 64
 
 //key codes
@@ -190,6 +190,9 @@ int		ft_close(void);
 int		key_press(int keycode);
 void	rotate(int dir);
 void	move_fwd(void);
+void	move_bwd(void);
+void	move_lsw(void);
+void	move_rsw(void);
 void	fps_count(void);
 
 #endif
