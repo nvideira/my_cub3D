@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:05:01 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/26 09:57:14 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:52:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_inside(char **map, int y, int x)
 	return (0);
 }
 
-int	midle_lines(char **map, int line)
+int	middle_lines(char **map, int line)
 {
 	int	i;
 
@@ -79,7 +79,7 @@ int	not_closed(char **map)
 		if (line == 0 || line == last_line - 1)
 			error_found += extreme_lines(map, line);
 		else
-			error_found += midle_lines(map, line);
+			error_found += middle_lines(map, line);
 		if (error_found != 0)
 			break ;
 	}
@@ -94,6 +94,5 @@ int	check_map(void)
 		return (msg_error("\e[1;91mError\nMap is not closed\n\e[0m"));
 	if (not_solo())
 		return (msg_error("\e[1;91mError\nThis map is not single player\n\e[0m"));
-	printf("MAP IS fineeeeee\n");
 	return (0);
 }

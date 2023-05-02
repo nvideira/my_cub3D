@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 22:29:17 by nvideira          #+#    #+#             */
-/*   Updated: 2023/05/02 11:36:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:41:22 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,38 +50,6 @@ void	rotate(int dir)
 	old_plane_x = vars()->play->plane_x;
 	vars()->play->plane_x = vars()->play->plane_x * cos(dir * vars()->chrono->rot_speed) - vars()->play->plane_y * sin(dir * vars()->chrono->rot_speed);
 	vars()->play->plane_y = old_plane_x * sin(dir * vars()->chrono->rot_speed) + vars()->play->plane_y * cos(dir * vars()->chrono->rot_speed);
-}
-
-void	move_fwd(void)
-{
-	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x + vars()->play->dir_x * vars()->chrono->move_speed))] == '0')
-		vars()->play->pos_x += vars()->play->dir_x * vars()->chrono->move_speed;
-	if(vars()->map[(int)(vars()->play->pos_y + vars()->play->dir_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
-		vars()->play->pos_y += vars()->play->dir_y * vars()->chrono->move_speed;
-}
-
-void	move_bwd(void)
-{
-	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x - vars()->play->dir_x * vars()->chrono->move_speed))] == '0')
-		vars()->play->pos_x -= vars()->play->dir_x * vars()->chrono->move_speed;
-	if(vars()->map[(int)(vars()->play->pos_y - vars()->play->dir_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
-		vars()->play->pos_y -= vars()->play->dir_y * vars()->chrono->move_speed;
-}
-
-void	move_lsw(void)
-{
-	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x - vars()->play->plane_x * vars()->chrono->move_speed))] == '0')
-		vars()->play->pos_x += vars()->play->plane_x * vars()->chrono->move_speed;
-	if(vars()->map[(int)(vars()->play->pos_y - vars()->play->plane_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
-		vars()->play->pos_y -= vars()->play->plane_y * vars()->chrono->move_speed;
-}
-
-void	move_rsw(void)
-{
-	if(vars()->map[(int)floor((vars()->play->pos_y))][(int)floor((vars()->play->pos_x + vars()->play->plane_x * vars()->chrono->move_speed))] == '0')
-		vars()->play->pos_x -= vars()->play->plane_x * vars()->chrono->move_speed;
-	if(vars()->map[(int)(vars()->play->pos_y + vars()->play->plane_y * vars()->chrono->move_speed)][(int)(vars()->play->pos_x)] == '0')
-		vars()->play->pos_y += vars()->play->plane_y * vars()->chrono->move_speed;
 }
 
 void	fps_count(void)

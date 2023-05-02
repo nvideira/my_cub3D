@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 12:06:25 by lleiria-          #+#    #+#              #
-#    Updated: 2023/04/28 16:35:50 by ubuntu           ###   ########.fr        #
+#    Updated: 2023/05/02 12:44:32 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,11 @@ DEPS		=	libft/libft.a get_next_line/get_next_line.a
 INCLUDE		=	-I cub3d.h
 SRCS_		=	main.c \
 				exit.c \
-				checks/check_map.c \
-				checks/parsing_utils.c \
-				checks/check_map_utils.c\
 				sort_data.c \
 				mlx_init.c\
-				movement/keys.c \
-				raycasting/raycast.c \
-				raycasting/draw.c
+				movement/keys.c movement/wasd.c \
+				raycasting/raycast.c raycasting/draw.c \
+				checks/check_map.c checks/parsing_utils.c checks/check_map_utils.c
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))
 
