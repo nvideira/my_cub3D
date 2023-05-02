@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:05:01 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/02 12:52:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 15:09:15 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ int	not_closed(char **map)
 int	check_map(void)
 {
 	if (abnormalities(vars()->map))
-		return (msg_error("\e[1;91mError\nAbnormalies found in the map\n\e[0m"));
+		return (msg_error("\e[1;91mError\nAbnormalies found\n\e[0m"));
 	if (not_closed(vars()->map))
 		return (msg_error("\e[1;91mError\nMap is not closed\n\e[0m"));
 	if (not_solo())
-		return (msg_error("\e[1;91mError\nThis map is not single player\n\e[0m"));
+		return (msg_error("\e[1;91mError\nMap is not single player\n\e[0m"));
 	return (0);
 }

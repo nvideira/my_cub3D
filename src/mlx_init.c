@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/04/30 21:17:57 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:07:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ void    init_cub(void)
 	init_vars();
 	vars()->img = (t_img *)malloc(sizeof(t_img));
     vars()->mlx = mlx_init();
-    vars()->window = mlx_new_window(vars()->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+    vars()->window = mlx_new_window(vars()->mlx, WIN_WID, WIN_HEI, "Cub3D");
 }

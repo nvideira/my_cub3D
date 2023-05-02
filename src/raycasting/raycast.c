@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/02 11:35:40 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 15:07:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void    raycast_main(void)
     int x;
 
     x = 0;
-	vars()->img->img = mlx_new_image(vars()->mlx, WIN_WIDTH, WIN_HEIGHT);
+	vars()->img->img = mlx_new_image(vars()->mlx, WIN_WID, WIN_HEI);
 	vars()->img->addr = mlx_get_data_addr(vars()->img->img, &vars()->img->bits_per_pixel, &vars()->img->line_length, &vars()->img->endian);
-    while (x < WIN_WIDTH)
+    while (x < WIN_WID)
     {
         raycast(x);
         x++;
@@ -34,7 +34,7 @@ void    raycast(int x)
 	int hit;
 	int side;
 
-	vars()->play->cam_x = 2 * x / (double)WIN_WIDTH - 1;
+	vars()->play->cam_x = 2 * x / (double)WIN_WID - 1;
 	vars()->play->ray_d_x = -vars()->play->dir_x - vars()->play->plane_x * vars()->play->cam_x;
     vars()->play->ray_d_y = vars()->play->dir_y + vars()->play->plane_y * vars()->play->cam_x;
 	vars()->play->map_x = (int)vars()->play->pos_x;

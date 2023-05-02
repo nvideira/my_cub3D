@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/02 11:11:40 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 15:07:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 
 //screen
 # define FOV_ANGLE (PI / 3)
-# define WIN_WIDTH 1300
-# define WIN_HEIGHT 700
+# define WIN_WID 1300
+# define WIN_HEI 700
 # define TILE_SIZE 64
 
 //key codes
