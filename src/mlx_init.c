@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/02 15:07:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:27:53 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	init_vars(void)
 	vars()->play = (t_player *)malloc(sizeof(t_player));
 	vars()->chrono = (t_time *)malloc(sizeof(t_time));
 	vars()->graph = (t_graph *)malloc(sizeof(t_graph));
+	vars()->img = (t_img *)malloc(sizeof(t_img));
  	find_player();
 	define_dir_values();
  	vars()->play->cam_x = 0;

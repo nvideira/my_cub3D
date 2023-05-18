@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 12:06:25 by lleiria-          #+#    #+#              #
-#    Updated: 2023/05/02 12:44:32 by ubuntu           ###   ########.fr        #
+#    Updated: 2023/05/18 14:30:38 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS_		=	main.c \
 				sort_data.c \
 				mlx_init.c\
 				movement/keys.c movement/wasd.c \
-				raycasting/raycast.c raycasting/draw.c \
+				raycasting/raycast.c raycasting/draw_simple.c \
 				checks/check_map.c checks/parsing_utils.c checks/check_map_utils.c
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))

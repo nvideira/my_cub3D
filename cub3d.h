@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/02 15:07:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/18 12:36:54 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define TWO_PI 6.28318530717958647692
 
 //screen
-# define FOV_ANGLE (PI / 3)
+//# define FOV_ANGLE PI / 3
 # define WIN_WID 1300
 # define WIN_HEI 700
 # define TILE_SIZE 64
@@ -142,7 +142,7 @@ typedef struct s_input
 ---/  ___   /------/  /___|  |---\ \| |-|  |-----------/  /___|  |--\___  \-----|  |----
 --/  /---\  \-----/  _____   |----\   |-|  |----------/  _____   |------\  |----|  |----
 -/  /-----\  \---/  /-----|  |-----|  |--\  \_____---/  /-----|  |--____/  /----|  |----
-/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-|______/-----|__|----*/
+/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-/______/-----|__|----*/
 
 t_input	*vars(void);
 
@@ -150,10 +150,13 @@ t_input	*vars(void);
 void    raycast_main(void);
 void    raycast(int x); //-----> work in progress
 
-//draw.c
+//draw_simple.c
 void	put_stripe(int x, int color);
 void	start_draw(int x, int side);
 void	my_mlx_pixel_put(int x, int y, int color);
+
+//draw_textured.c
+
 
 //exit.c
 int		msg_error(char *message);

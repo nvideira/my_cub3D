@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 22:29:17 by nvideira          #+#    #+#             */
-/*   Updated: 2023/05/02 15:16:51 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/18 14:29:01 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	fps_count(void)
 	vars()->chrono->time = clock();
 	vars()->chrono->frame_time = (double)(vars()->chrono->time \
 		- vars()->chrono->old_time) / CLOCKS_PER_SEC;
-	vars()->chrono->move_speed = vars()->chrono->frame_time * 5000.0;
-	vars()->chrono->rot_speed = vars()->chrono->frame_time * 3000.0;
+	vars()->chrono->move_speed = vars()->chrono->frame_time * 8000.0;
+	vars()->chrono->rot_speed = vars()->chrono->frame_time * 5000.0;
 }
