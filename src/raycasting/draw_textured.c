@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_textured.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:31:18 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/22 14:49:03 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/23 00:07:26 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,53 @@ void	draw_tex(int side)
 {
     double	wall_x;
 	int		tex_x;
+	double	tex_pos;
+	int 	y;
+	int		tex_y;
 
-    if (side == 0)
+	if (side == 0)
 		wall_x = vars()->play->pos_y + vars()->play->perp_wall_dist * vars()->play->ray_d_y;
 	else
     	wall_x = vars()->play->pos_x + vars()->play->perp_wall_dist * vars()->play->ray_d_x;
-    wall_x -= floor(wall_x);
+	wall_x -= floor(wall_x); 
 
-    tex_x = (int)(wall_x * double(TEX_RES));
-    if(side == 0 && vars()->play->ray_d_x > 0)
+	tex_x = (int)(wall_x * double(TEX_RES));
+	if(side == 0 && vars()->play->ray_d_x > 0)
 		tex_x = TEX_RES - tex_x - 1;
-    if(side == 1 && vars()->play->ray_d_y < 0)
+	if(side == 1 && vars()->play->ray_d_y < 0)
 		tex_x = TEX_RES - tex_x - 1;
+	y = vars()->graph->draw_start;
+	vars()->play->step = 1.0 * TEX_RES / vars()->play->line_height;
+	tex_pos = (vars()->graph->draw_start - WIN_HEI / 2 + vars()->play->line_height / 2) * vars()->play->step;
+	while (y < vars()->graph->draw_end)
+	{
+		tex_y = (int)tex_pos & (TEX_RES - 1);
+		tex_pos += vars()->play->step;
+		//Uint32 color = texture[texNum][texHeight * texY + texX]; --> nao aplicavel ao nosso programa
+		////make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		//if(side == 1) color = (color >> 1) & 8355711;
+		//buffer[y][x] = color;
+		y++;
+	}
 }
+
+
+
+/*
+
+draw_wall do lucas    |
+                      V
+void	draw_wall(t_rloop *tudao, t_draw *draw, t_all *all, int y)
+{
+	draw->tex_y = (int)draw->texpos & (all->tex[tudao->side].img_height - 1);
+	draw->texpos += draw->step;
+	draw->color = *(get_img_pixel(&(all->tex[tudao->side]), \
+	draw->tex_x, draw->texpos));
+	if (tudao->side == NO || tudao->side == SO)
+		draw->color = mlx_get_color_value(all->mlx.mlx,
+				(int)((draw->color & 0x0000FF) * 0.70)
+				| (int)(((draw->color >> 8) & 0x0000FF) * 0.70) << 8
+				| (int)((draw->color >> 16) * 0.70) << 16);
+	my_mlx_pixel_put(&(all->mlx.img), SCREENW - draw->x - 1, y, draw->color);
+}
+*/
