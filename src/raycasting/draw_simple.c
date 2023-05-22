@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/02 17:09:55 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/19 12:09:31 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	start_draw(int x, int side)
 {
 	int	color;
 
-	color = PURPLE;
+	color = DARK_RED;
 	vars()->graph->line_height = (int)(WIN_HEI / vars()->play->perp_wall_dist);
 	vars()->graph->draw_start = -vars()->graph->line_height / 2 + WIN_HEI / 2;
 	if (vars()->graph->draw_start < 0)
@@ -25,7 +25,7 @@ void	start_draw(int x, int side)
 	if (vars()->graph->draw_end >= WIN_HEI)
 		vars()->graph->draw_end = WIN_HEI - 1;
 	if (side == 0)
-		color /= 3;
+		color /= 2;
 	put_stripe(x, color);
 }
 

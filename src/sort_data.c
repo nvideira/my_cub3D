@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:09:34 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/04/26 10:05:07 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:34:57 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	is_not_alright(void)
 {
-	if (vars()->NO == NULL || vars()->SO == NULL || vars()->WE == NULL
-		|| vars()->EA == NULL || vars()->F == NULL || vars()->C == NULL)
+	if (vars()->no == NULL || vars()->so == NULL || vars()->we == NULL
+		|| vars()->ea == NULL || vars()->f == NULL || vars()->c == NULL)
 		return (msg_error("\e[1;91mError\nwrong number of elements\n\e[0m"));
 	return (0);
 }
 
 void	is_element(char *line)
 {
-	if (!ft_strncmp(line, "NO ", 3) && vars()->NO == NULL)
-		vars()->NO = ft_strdup(line + 3);
-	else if (!ft_strncmp(line, "SO ", 3) && vars()->SO == NULL)
-		vars()->SO = ft_strdup(line + 3);
-	else if (!ft_strncmp(line, "WE ", 3) && vars()->WE == NULL)
-		vars()->WE = ft_strdup(line + 3);
-	else if (!ft_strncmp(line, "EA ", 3) && vars()->EA == NULL)
-		vars()->EA = ft_strdup(line + 3);
-	else if (!ft_strncmp(line, "F ", 2) && vars()->F == NULL)
-		vars()->F = ft_strdup(line + 2);
-	else if (!ft_strncmp(line, "C ", 2) && vars()->C == NULL)
-		vars()->C = ft_strdup(line + 2);
+	if (!ft_strncmp(line, "NO ", 3) && vars()->no == NULL)
+		vars()->no = ft_strdup(line + 3);
+	else if (!ft_strncmp(line, "SO ", 3) && vars()->so == NULL)
+		vars()->so = ft_strdup(line + 3);
+	else if (!ft_strncmp(line, "WE ", 3) && vars()->we == NULL)
+		vars()->we = ft_strdup(line + 3);
+	else if (!ft_strncmp(line, "EA ", 3) && vars()->ea == NULL)
+		vars()->ea = ft_strdup(line + 3);
+	else if (!ft_strncmp(line, "F ", 2) && vars()->f == NULL)
+		vars()->f = ft_strdup(line + 2);
+	else if (!ft_strncmp(line, "C ", 2) && vars()->c == NULL)
+		vars()->c = ft_strdup(line + 2);
 }
 
 int	put_elems(char **tmp)

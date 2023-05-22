@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/18 12:36:54 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:35:32 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 //# define FOV_ANGLE PI / 3
 # define WIN_WID 1300
 # define WIN_HEI 700
-# define TILE_SIZE 64
+# define TILE_SIZE 1024
+# define TEX_RES 128
 
 //key codes
 # define ESC_KEY 65307
@@ -104,6 +105,8 @@ typedef struct s_img
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
+	int		wid;
+	int		hei;
 	int		line_length;
 	int		endian;
 }	t_img;
@@ -119,36 +122,44 @@ typedef struct s_time
 
 typedef struct s_input
 {
-	char		*NO;
-	char		*SO;
-	char		*WE;
-	char		*EA;
-	char		*F;
-	char		*C;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
 	char		**map;
 	int			lines;
 	void		*mlx;
 	void		*window;
 	char		st_dir;
 	t_img		*img;
+	t_img		*n_img;
+	t_img		*s_img;
+	t_img		*w_img;
+	t_img		*e_img;
+	t_img		*floor;
+	t_img		*ceiling;
 	t_time		*chrono;
 	t_player	*play;
 	t_graph		*graph;
 }	t_input;
 
-/*----______----------_______--__----_-----_______--------_______----_______--________--
------/  ___  \-------/  __   |-\ \--| |---/  _____|------/  __   |--/  ____/-|__    __|-
-----/  /__/  /------/  /  |  |--\ \-| |--/  /-----------/  /  |  |-|  |___------|  |----
----/  ___   /------/  /___|  |---\ \| |-|  |-----------/  /___|  |--\___  \-----|  |----
---/  /---\  \-----/  _____   |----\   |-|  |----------/  _____   |------\  |----|  |----
--/  /-----\  \---/  /-----|  |-----|  |--\  \_____---/  /-----|  |--____/  /----|  |----
-/__/-------\__\-/__/------|__|-----|__|---\_______|-/__/------|__|-/______/-----|__|----*/
+/* ____                                               __      
+  /\  _`\                                            /\ \__   
+  \ \ \L\ \     __     __  __    ___     __      ____\ \ ,_\  
+   \ \ ,  /   /'__`\  /\ \/\ \  /'___\ /'__`\   /',__\\ \ \/  
+    \ \ \\ \ /\ \L\.\_\ \ \_\ \/\ \__//\ \L\.\_/\__, `\\ \ \_ 
+     \ \_\ \_\ \__/.\_\\/`____ \ \____\ \__/.\_\/\____/ \ \__\
+      \/_/\/ /\/__/\/_/ `/___/> \/____/\/__/\/_/\/___/   \/__/
+                        /\___/                             
+                          \/__/                              */
 
 t_input	*vars(void);
 
 //raycast.c
 void    raycast_main(void);
-void    raycast(int x); //-----> work in progress
+void    raycast(int x);
 
 //draw_simple.c
 void	put_stripe(int x, int color);

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:12:18 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/02 17:12:49 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:45:05 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_input	*vars(void)
 
 void	liberate(void)
 {
-	free_array(vars()->NO);
-	free_array(vars()->SO);
-	free_array(vars()->WE);
-	free_array(vars()->EA);
-	free_array(vars()->F);
-	free_array(vars()->C);
+	free_array(vars()->no);
+	free_array(vars()->so);
+	free_array(vars()->we);
+	free_array(vars()->ea);
+	free_array(vars()->f);
+	free_array(vars()->c);
 	free_matrix(vars()->map);
 }
 
