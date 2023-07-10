@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tex_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:17:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/19 12:11:57 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/07/10 23:03:06 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void	tex_raycast(void)
 			- vars()->play->pos_y + (1 - vars()->play->step_y) / 2) \
 			/ vars()->play->ray_d_y;
 	fps_count();
+	draw_tex(side);
 }

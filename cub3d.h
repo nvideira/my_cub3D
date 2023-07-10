@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/05/22 14:35:32 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/07/10 23:11:13 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_input
 	t_img		*s_img;
 	t_img		*w_img;
 	t_img		*e_img;
+	t_img		**tex_arr;
 	t_img		*floor;
 	t_img		*ceiling;
 	t_time		*chrono;

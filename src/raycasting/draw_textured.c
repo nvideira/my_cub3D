@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:31:18 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/23 00:07:26 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:33:08 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,39 @@ void	load_imgs(void)
 	vars()->n_img.addr = mlx_get_data_addr(vars()->n_img.img,
 		&vars()->n_img.bits_per_pixel, &vars()->n_img.line_length,
 		&vars()->n_img.endian);
+	vars()->tex_arr[0] = vars()->n_img;
 	vars()->w_img.img = mlx_xpm_file_to_image(vars()->mlx,
 		vars()->we,	&vars()->w_img.wid, &vars()->w_img.hei);
 	vars()->w_img.addr = mlx_get_data_addr(vars()->w_img.img,
 		&vars()->w_img.bits_per_pixel, &vars()->w_img.line_length,
 		&vars()->w_img.endian);
+	vars()->tex_arr[1] = vars()->w_img;
 	vars()->e_img.img = mlx_xpm_file_to_image(vars()->mlx,
 		vars()->ea,	&vars()->e_img.wid, &vars()->e_img.hei);
 	vars()->e_img.addr = mlx_get_data_addr(vars()->e_img.img,
 		&vars()->e_img.bits_per_pixel, &vars()->e_img.line_length,
 		&vars()->e_img.endian);
+	vars()->tex_arr[2] = vars()->e_img;
 	vars()->s_img.img = mlx_xpm_file_to_image(vars()->mlx,
 		vars()->so,	&vars()->s_img.wid, &vars()->s_img.hei);
 	vars()->s_img.addr = mlx_get_data_addr(vars()->s_img.img,
 		&vars()->s_img.bits_per_pixel, &vars()->s_img.line_length,
 		&vars()->s_img.endian);
+	vars()->tex_arr[3] = vars()->s_img;
+}
+
+int	check_side(int side)
+{
+	//estes valores estao trocados, provavelmente. vai ser preciso mexe-los, depois de isto estar a funcionar
+	if (side == 0 && vars()->play->ray_d_x > 0)
+		return (0);
+	else if (side == 0 && vars()->play->ray_d_x < 0)
+		return (1);
+	else if (side == 1 && vars()->play->ray_d_y > 0)
+		return (2);
+	else if (side == 1 && vars()->play->ray_d_y < 0)
+		return (3);
+	return (0);
 }
 
 void	draw_tex(int side)
@@ -43,6 +61,7 @@ void	draw_tex(int side)
 	double	tex_pos;
 	int 	y;
 	int		tex_y;
+	int		color;
 
 	if (side == 0)
 		wall_x = vars()->play->pos_y + vars()->play->perp_wall_dist * vars()->play->ray_d_y;
@@ -62,6 +81,8 @@ void	draw_tex(int side)
 	{
 		tex_y = (int)tex_pos & (TEX_RES - 1);
 		tex_pos += vars()->play->step;
+		color = vars()->tex_arr[check_side(side)][TEX_RES * tex_y + tex_x];
+		my_mlx_pixel_put(vars()->graph->x, y, color);
 		//Uint32 color = texture[texNum][texHeight * texY + texX]; --> nao aplicavel ao nosso programa
 		////make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 		//if(side == 1) color = (color >> 1) & 8355711;
