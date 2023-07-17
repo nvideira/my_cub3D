@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/07/12 18:17:07 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/07/17 01:56:21 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,16 @@ typedef struct s_time
 	double	rot_speed;
 }	t_time;
 
+typedef struct s_key
+{
+	int	d;
+	int	a;
+	int w;
+	int	s;
+	int left;
+	int	right;
+}	t_key;
+
 typedef struct s_input
 {
 	char		*no;
@@ -138,12 +148,12 @@ typedef struct s_input
 	t_img		*s_img;
 	t_img		*w_img;
 	t_img		*e_img;
-	t_img		**tex_arr;
 	t_img		*floor;
 	t_img		*ceiling;
 	t_time		*chrono;
 	t_player	*play;
 	t_graph		*graph;
+	t_key		*key;
 }	t_input;
 
 /* ____                                               __      
@@ -162,19 +172,19 @@ t_input	*vars(void);
 void    raycast_main(void);
 void    raycast(int x);
 
-//tex_raycast.c
-void	tex_raycast(void);
-
-
 //draw_simple.c
 void	put_stripe(int x, int color);
 void	start_draw(int x, int side);
 void	my_mlx_pixel_put(int x, int y, int color);
 
+//tex_raycast.c
+void	tex_raycast(int x);
+
+
 //draw_textured.c
-void	load_imgs(void);
-int		check_side(int side);
 void	draw_tex(int side);
+void	load_imgs(void);
+
 
 //exit.c
 int		msg_error(char *message);
@@ -209,11 +219,13 @@ void	define_dir_values(void);
 //keys.c
 int		ft_close(void);
 int		key_press(int keycode);
+int		key_release(int keycode);
 void	rotate(int dir);
-void	move_fwd(void);
-void	move_bwd(void);
-void	move_lsw(void);
-void	move_rsw(void);
+void 	lets_move(int ws, int ad);
+// void	move_fwd(void);
+// void	move_bwd(void);
+// void	move_lsw(void);
+// void	move_rsw(void);
 void	fps_count(void);
 
 #endif
