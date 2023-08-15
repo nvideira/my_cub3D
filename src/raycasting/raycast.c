@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:18:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/18 12:53:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/08/12 22:34:41 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ void	raycast(int x)
 		* vars()->play->cam_x;
 	vars()->play->map_x = (int)vars()->play->pos_x;
 	vars()->play->map_y = (int)vars()->play->pos_y;
-	if (vars()->play->ray_d_x == 0)
+	/*if (vars()->play->ray_d_x == 0)
 		vars()->play->d_dist_x = DBL_MAX;
-	else
-		vars()->play->d_dist_x = fabs(1 / vars()->play->ray_d_x);
-	if (vars()->play->ray_d_y == 0)
+	else*/
+	vars()->play->d_dist_x = fabs(1 / vars()->play->ray_d_x);
+	/*if (vars()->play->ray_d_y == 0)
 		vars()->play->d_dist_y = DBL_MAX;
-	else
-		vars()->play->d_dist_y = fabs(1 / vars()->play->ray_d_y);
+	else*/
+	vars()->play->d_dist_y = fabs(1 / vars()->play->ray_d_y);
 	hit = 0;
 	if (vars()->play->ray_d_x < 0)
 	{

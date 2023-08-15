@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wasd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lleiria- <lleiria-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:40:43 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/07/16 23:08:56 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:57:44 by lleiria-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	move_play(double new_dir_x, double new_dir_y)
 }
 
 // w - s , a - d
-//M_PI = 180;
-//M_PI_2 = 90;
-//M_PI_4 = 45;
+// M_PI = 180
+// M_PI_2 = 90
+// M_PI_4 = 45	
 double	find_angle(int ws, int ad)
 {
 	double angle;

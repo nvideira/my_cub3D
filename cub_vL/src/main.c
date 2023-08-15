@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:12:18 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/07/17 02:04:50 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:30:33 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ t_input	*vars(void)
 
 void	liberate(void)
 {
-	free_array(vars()->no);
-	free_array(vars()->so);
-	free_array(vars()->we);
-	free_array(vars()->ea);
-	free_array(vars()->f);
-	free_array(vars()->c);
+	free_matrix(vars()->tex_path);
 	free_matrix(vars()->map);
 }
 

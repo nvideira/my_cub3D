@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:42:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/05/19 12:09:31 by ubuntu           ###   ########.fr       */
+/*   Updated: 2023/08/15 18:15:36 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	put_stripe(int x, int color)
 
 void	my_mlx_pixel_put(int x, int y, int color)
 {
-	char	*dst;
+	int	*dst;
 
 	dst = vars()->img->addr + (y * vars()->img->line_length + x \
-		* (vars()->img->bits_per_pixel / 8));
+		* (vars()->img->bpp / 8));
 	*(unsigned int *)dst = color;
 }

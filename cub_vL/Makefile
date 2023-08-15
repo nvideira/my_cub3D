@@ -6,12 +6,12 @@
 #    By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 12:06:25 by lleiria-          #+#    #+#              #
-#    Updated: 2023/07/17 01:54:33 by nvideira         ###   ########.fr        #
+#    Updated: 2023/08/15 18:14:55 by nvideira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread #-fsanitize=thread -g
+CFLAGS		= -Wall -Wextra -Werror -pthread -g
 #MLXFLAGS	= -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
@@ -24,7 +24,7 @@ SRCS_		=	main.c \
 				sort_data.c \
 				mlx_init.c\
 				movement/keys.c movement/wasd.c \
-				raycasting/raycast.c raycasting/draw_simple.c raycasting/tex_raycast.c raycasting/draw_textured.c\
+				raycasting/raycast.c raycasting/draw_simple.c raycasting/draw_textured.c raycasting/tex_raycast.c\
 				checks/check_map.c checks/parsing_utils.c checks/check_map_utils.c
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))

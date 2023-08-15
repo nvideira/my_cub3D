@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:35:32 by ubuntu            #+#    #+#             */
-/*   Updated: 2023/07/17 02:17:05 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:36:28 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,15 @@ void	init_keys(void)
 
 void	init_vars(void)
 {
+	int	i;
+	
+	i = -1;
 	vars()->play = (t_player *)malloc(sizeof(t_player));
 	vars()->chrono = (t_time *)malloc(sizeof(t_time));
 	vars()->graph = (t_graph *)malloc(sizeof(t_graph));
 	vars()->img = (t_img *)malloc(sizeof(t_img));
-	// vars()->n_img = (t_img *)malloc(sizeof(t_img));
-	// vars()->s_img = (t_img *)malloc(sizeof(t_img));
-	// vars()->w_img = (t_img *)malloc(sizeof(t_img));
-	// vars()->e_img = (t_img *)malloc(sizeof(t_img));
+	while (++i < 4)
+		vars()->tex_path[i] = NULL;
  	find_player();
 	define_dir_values();
  	vars()->play->cam_x = 0;

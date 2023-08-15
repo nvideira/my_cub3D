@@ -6,7 +6,7 @@
 /*   By: nvideira <nvideira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:08:21 by lleiria-          #+#    #+#             */
-/*   Updated: 2023/07/17 01:56:21 by nvideira         ###   ########.fr       */
+/*   Updated: 2023/08/15 18:09:34 by nvideira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@
 
 # define PI 3.14159265358979323846
 # define TWO_PI 6.28318530717958647692
+# define TEX_NO 0
+# define TEX_SO 1
+# define TEX_WE 2
+# define TEX_EA 3
+# define TEX_HEI 128
+# define TEX_WID 128
 
 //screen
 //# define FOV_ANGLE PI / 3
@@ -102,9 +108,10 @@ typedef struct s_graph
 
 typedef struct s_img
 {
+	int		line_height;
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
+	int		*addr;
+	int		bpp;
 	int		wid;
 	int		hei;
 	int		line_length;
@@ -132,10 +139,8 @@ typedef struct s_key
 
 typedef struct s_input
 {
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
+	char		*tex_path[4];
+	int			textures[4][TEX_HEI * TEX_WID];
 	char		*f;
 	char		*c;
 	char		**map;
@@ -172,19 +177,18 @@ t_input	*vars(void);
 void    raycast_main(void);
 void    raycast(int x);
 
+//tex_raycast.c
+void	tex_raycast(int x);
+
 //draw_simple.c
 void	put_stripe(int x, int color);
 void	start_draw(int x, int side);
 void	my_mlx_pixel_put(int x, int y, int color);
 
-//tex_raycast.c
-void	tex_raycast(int x);
-
-
 //draw_textured.c
-void	draw_tex(int side);
 void	load_imgs(void);
-
+void	draw_tex(int side);
+void	load_tex(t_img *img, int tex);
 
 //exit.c
 int		msg_error(char *message);
